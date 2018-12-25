@@ -29,7 +29,8 @@ public class ServiceConnection extends CustomTabsServiceConnection {
     private WeakReference<ServiceConnectionCallback> mConnectionCallback;
 
     public ServiceConnection(ServiceConnectionCallback connectionCallback) {
-        mConnectionCallback = new WeakReference<ServiceConnectionCallback>(connectionCallback);
+        mConnectionCallback = new WeakReference<ServiceConnectionCallback>;
+        mConnectionCallback = ServiceConnectionCallback (connectionCallback);
     }
 
     @Override
