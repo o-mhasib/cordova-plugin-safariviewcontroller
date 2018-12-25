@@ -43,14 +43,12 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
-        String[] switchlist = {"isAvailable", "show", "connectToService", "warmUp", "mayLaunchUrl"};
-        
         switch (action) {
-            case switchlist[0]:
+            case "isAvailable":
                 callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, mCustomTabPluginHelper.isAvailable()));
                 return true;
 
-            case switchlist[1]: {
+            case "show": {
                 final JSONObject options = args.getJSONObject(0);
                 final String url = options.optString("url");
                 if(TextUtils.isEmpty(url)){
@@ -88,14 +86,14 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
                 callbackContext.sendPluginResult(pluginResult);
                 return true;
             }
-            case switchlist[2]: {
+            case "connectToService": {
                 if (bindCustomTabsService())
                     callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, true));
                 else
                     callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, "Failed to connect to service"));
                 return true;
             }
-            case switchlist[3]: {
+            case "warmUp": {
                 if (warmUp()) {
                     callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, true));
                 } else {
@@ -103,7 +101,7 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
                 }
                 return true;
             }
-            case switchlist[4]: {
+            case "mayLaunchUrl": {
                 final String url = args.getString(0);
                 if(mayLaunchUrl(url)){
                     callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, true));
