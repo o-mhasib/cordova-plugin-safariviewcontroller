@@ -44,23 +44,23 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 	
 	int SwitchAction;
-	if(action = "isAvailable")
+	if(action == "isAvailable")
 	{
 		SwitchAction = 1;
 	}
-	if(action = "show")
+	if(action == "show")
 	{
 		SwitchAction = 2;
 	}
-	if(action = "connectToService")
+	if(action == "connectToService")
 	{
 		SwitchAction = 3;
 	}
-	if(action = "warmUp")
+	if(action == "warmUp")
 	{
 		SwitchAction = 4;
 	}
-	if(action = "mayLaunchUrl")
+	if(action == "mayLaunchUrl")
 	{
 		SwitchAction = 5;
 	}
@@ -157,7 +157,7 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
         final String animType = "anim";
 		
 		int SwitchAction;
-		if(transition = "slide")
+		if(transition == "slide")
 		{
 			SwitchAction = 1;
 		}
