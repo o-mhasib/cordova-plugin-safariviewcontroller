@@ -46,11 +46,11 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
         String[] switchlist = {"isAvailable", "show", "connectToService", "warmUp", "mayLaunchUrl"};
         
         switch (action) {
-            case "isAvailable":
+            case switchlist[0]:
                 callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, mCustomTabPluginHelper.isAvailable()));
                 return true;
 
-            case "show": {
+            case switchlist[1]: {
                 final JSONObject options = args.getJSONObject(0);
                 final String url = options.optString("url");
                 if(TextUtils.isEmpty(url)){
@@ -88,14 +88,14 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
                 callbackContext.sendPluginResult(pluginResult);
                 return true;
             }
-            case "connectToService": {
+            case switchlist[2]: {
                 if (bindCustomTabsService())
                     callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, true));
                 else
                     callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, "Failed to connect to service"));
                 return true;
             }
-            case "warmUp": {
+            case switchlist[3]: {
                 if (warmUp()) {
                     callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, true));
                 } else {
@@ -103,7 +103,7 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
                 }
                 return true;
             }
-            case "mayLaunchUrl": {
+            case switchlist[4]: {
                 final String url = args.getString(0);
                 if(mayLaunchUrl(url)){
                     callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, true));
