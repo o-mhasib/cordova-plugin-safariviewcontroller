@@ -43,6 +43,8 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
+        String[] switchlist = {"isAvailable", "show", "connectToService", "warmUp", "mayLaunchUrl"};
+        
         switch (action) {
             case "isAvailable":
                 callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, mCustomTabPluginHelper.isAvailable()));
