@@ -1,22 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @o-mhasib Sign out
-1
-0 69 MoemenMostafa/cordova-plugin-safariviewcontroller
-forked from EddyVerbruggen/cordova-plugin-safariviewcontroller
- Code  Pull requests 0  Projects 0  Wiki  Insights
-cordova-plugin-safariviewcontroller/src/android/helpers/CustomTabsHelper.java
-e600d3d  on May 20, 2017
-@MoemenMostafa MoemenMostafa force chrome
-@MoemenMostafa @setheen
-     
-145 lines (131 sloc)  6.29 KB
 // Copyright 2015 Google Inc. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -93,7 +74,7 @@ public class CustomTabsHelper {
 
         // Get all apps that can handle VIEW intents.
         List<ResolveInfo> resolvedActivityList = pm.queryIntentActivities(activityIntent, PackageManager.MATCH_ALL);
-        List<String> packagesSupportingCustomTabs = new ArrayList<String>();
+        List<String> packagesSupportingCustomTabs = new ArrayList<>();
         for (ResolveInfo info : resolvedActivityList) {
             if (info.activityInfo.packageName.equals("com.android.chrome")) {
                 Intent serviceIntent = new Intent();
@@ -161,16 +142,3 @@ public class CustomTabsHelper {
         return new String[]{"", STABLE_PACKAGE, BETA_PACKAGE, DEV_PACKAGE, LOCAL_PACKAGE};
     }
 }
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Press h to open a hovercard with more details.
