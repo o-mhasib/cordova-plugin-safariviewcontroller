@@ -162,7 +162,7 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
 			SwitchAction = 1;
 		}
 		
-        switch (transition){
+        switch (SwitchAction){
             case 1:
             default:
                 mStartAnimationBundle = ActivityOptionsCompat.makeCustomAnimation(
