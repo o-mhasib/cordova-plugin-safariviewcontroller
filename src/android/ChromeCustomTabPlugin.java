@@ -43,7 +43,7 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 	
-	var SwitchAction = 0;
+	int SwitchAction;
 	if(action = "isAvailable")
 	{
 		SwitchAction = 1;
@@ -156,7 +156,7 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
     private void addTransition(CustomTabsIntent.Builder builder, String transition) {
         final String animType = "anim";
 		
-		var SwitchAction = 0;
+		int SwitchAction;
 		if(transition = "slide")
 		{
 			SwitchAction = 1;
