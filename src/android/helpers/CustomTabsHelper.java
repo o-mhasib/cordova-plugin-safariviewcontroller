@@ -1,3 +1,22 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @o-mhasib Sign out
+1
+0 69 MoemenMostafa/cordova-plugin-safariviewcontroller
+forked from EddyVerbruggen/cordova-plugin-safariviewcontroller
+ Code  Pull requests 0  Projects 0  Wiki  Insights
+cordova-plugin-safariviewcontroller/src/android/helpers/CustomTabsHelper.java
+e600d3d  on May 20, 2017
+@MoemenMostafa MoemenMostafa force chrome
+@MoemenMostafa @setheen
+     
+145 lines (131 sloc)  6.29 KB
 // Copyright 2015 Google Inc. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -74,25 +93,24 @@ public class CustomTabsHelper {
 
         // Get all apps that can handle VIEW intents.
         List<ResolveInfo> resolvedActivityList = pm.queryIntentActivities(activityIntent, PackageManager.MATCH_ALL);
-        //List<String> packagesSupportingCustomTabs = new List<String>();
-        String[] packagesSupportingCustomTabs = new String[100];
+        List<String> packagesSupportingCustomTabs = new ArrayList<String>();
         for (ResolveInfo info : resolvedActivityList) {
             if (info.activityInfo.packageName.equals("com.android.chrome")) {
                 Intent serviceIntent = new Intent();
                 serviceIntent.setAction(ACTION_CUSTOM_TABS_CONNECTION);
                 serviceIntent.setPackage(info.activityInfo.packageName);
                 if (pm.resolveService(serviceIntent, 0) != null) {
-                    packagesSupportingCustomTabs.push(info.activityInfo.packageName);
+                    packagesSupportingCustomTabs.add(info.activityInfo.packageName);
                 }
             }
         }
 
         // Now packagesSupportingCustomTabs contains all apps that can handle both VIEW intents
         // and service calls.
-        if (packagesSupportingCustomTabs.length() == 0 ) {
+        if (packagesSupportingCustomTabs.isEmpty()) {
             sPackageNameToUse = null;
-        } else if (packagesSupportingCustomTabs.length() == 1) {
-            sPackageNameToUse = packagesSupportingCustomTabs[0];
+        } else if (packagesSupportingCustomTabs.size() == 1) {
+            sPackageNameToUse = packagesSupportingCustomTabs.get(0);
         } else if (!TextUtils.isEmpty(defaultViewHandlerPackageName)
                 && !hasSpecializedHandlerIntents(context, activityIntent)
                 && packagesSupportingCustomTabs.contains(defaultViewHandlerPackageName)) {
@@ -143,3 +161,16 @@ public class CustomTabsHelper {
         return new String[]{"", STABLE_PACKAGE, BETA_PACKAGE, DEV_PACKAGE, LOCAL_PACKAGE};
     }
 }
+© 2018 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Press h to open a hovercard with more details.
