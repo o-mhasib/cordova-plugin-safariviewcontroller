@@ -74,24 +74,25 @@ public class CustomTabsHelper {
 
         // Get all apps that can handle VIEW intents.
         List<ResolveInfo> resolvedActivityList = pm.queryIntentActivities(activityIntent, PackageManager.MATCH_ALL);
-        List<String> packagesSupportingCustomTabs = new List<String>();
+        //List<String> packagesSupportingCustomTabs = new List<String>();
+        String[] packagesSupportingCustomTabs = new String[100];
         for (ResolveInfo info : resolvedActivityList) {
             if (info.activityInfo.packageName.equals("com.android.chrome")) {
                 Intent serviceIntent = new Intent();
                 serviceIntent.setAction(ACTION_CUSTOM_TABS_CONNECTION);
                 serviceIntent.setPackage(info.activityInfo.packageName);
                 if (pm.resolveService(serviceIntent, 0) != null) {
-                    packagesSupportingCustomTabs.add(info.activityInfo.packageName);
+                    packagesSupportingCustomTabs.push(info.activityInfo.packageName);
                 }
             }
         }
 
         // Now packagesSupportingCustomTabs contains all apps that can handle both VIEW intents
         // and service calls.
-        if (packagesSupportingCustomTabs.isEmpty()) {
+        if (packagesSupportingCustomTabs.length() == 0 ) {
             sPackageNameToUse = null;
-        } else if (packagesSupportingCustomTabs.size() == 1) {
-            sPackageNameToUse = packagesSupportingCustomTabs.get(0);
+        } else if (packagesSupportingCustomTabs.length() == 1) {
+            sPackageNameToUse = packagesSupportingCustomTabs[0];
         } else if (!TextUtils.isEmpty(defaultViewHandlerPackageName)
                 && !hasSpecializedHandlerIntents(context, activityIntent)
                 && packagesSupportingCustomTabs.contains(defaultViewHandlerPackageName)) {
