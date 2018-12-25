@@ -44,6 +44,7 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 	
 	int SwitchAction;
+	    SwitchAction = 0;
 	if(action == "isAvailable")
 	{
 		SwitchAction = 1;
@@ -157,6 +158,7 @@ public class ChromeCustomTabPlugin extends CordovaPlugin{
         final String animType = "anim";
 		
 		int SwitchAction;
+	    	SwitchAction = 0;
 		if(transition == "slide")
 		{
 			SwitchAction = 1;
